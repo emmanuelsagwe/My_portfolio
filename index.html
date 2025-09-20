@@ -1,272 +1,314 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Emmanuel Sagwe — Portfolio</title>
-  <meta name="description" content="Portfolio of Emmanuel Sagwe — Network & Security Engineer." />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emmanuel Sagwe | Network & Security Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg: #0f1724;
-      --card: #0b1220;
-      --muted: #94a3b8;
-      --accent: #06b6d4;
-      --glass: rgba(255,255,255,0.03);
-      --radius: 14px;
-      --max-width: 1100px;
-      color-scheme: dark;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,#071023 0%, #071526 100%);
-      color:#e6eef6;
-      line-height:1.45;
-      padding:32px 20px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
+
+    body {
+      background-color: #0a192f;
+      color: #ccd6f6;
+      line-height: 1.6;
     }
-    .container{width:100%;max-width:var(--max-width)}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#052024}
-    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
-    nav a:hover{color:var(--accent)}
+    header {
+      background: #0a192f;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-    .hero{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:center;margin-bottom:26px}
-    .hero-card{background:var(--card);padding:28px;border-radius:var(--radius)}
-    .hero-left h1{margin:0 0 8px 0;font-size:28px}
-    .tagline{color:var(--accent);font-weight:700;margin-bottom:8px;display:inline-block}
-    .hero-left p{margin:0;color:var(--muted)}
-    .cta{margin-top:18px;display:flex;gap:12px}
-    .btn{background:linear-gradient(90deg,var(--accent),#7c3aed);border:none;padding:10px 14px;border-radius:10px;color:#001619;font-weight:700;cursor:pointer}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    header h1 {
+      color: #64ffda;
+      font-size: 1.5rem;
+    }
 
-    .profile{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;height:100%}
-    .avatar{width:110px;height:110px;border-radius:24px;background:linear-gradient(180deg,#0ea5a6,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#021017}
-    .small{color:var(--muted);font-size:14px}
+    nav {
+      display: flex;
+    }
 
-    section{margin-bottom:22px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:var(--glass);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    h2{margin:0 0 12px 0;font-size:18px}
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
 
-    .skills{display:flex;flex-wrap:wrap;gap:10px}
-    .skill{background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted)}
+    nav ul li {
+      margin-left: 20px;
+    }
 
-    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .project{padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03)}
-    .project h3{margin:0 0 8px 0}
-    .project p{margin:0;color:var(--muted);font-size:14px}
-    .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+    nav ul li a {
+      color: #ccd6f6;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
-    form label{display:block;font-weight:600;margin-bottom:6px}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    textarea{min-height:120px}
-    .foot{margin-top:18px;color:var(--muted);font-size:14px}
+    nav ul li a:hover {
+      color: #64ffda;
+    }
 
-    footer{margin-top:26px;color:var(--muted);text-align:center;padding:14px 0}
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #64ffda;
+    }
 
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.projects{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}}
-    @media (max-width:560px){nav{display:none}header{align-items:flex-start;flex-direction:column}.grid-3{grid-template-columns:1fr}}
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #112240;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        display: none;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        margin: 15px 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ccd6f6;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #8892b0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid #64ffda;
+      color: #64ffda;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn:hover {
+      background: #64ffda;
+      color: #0a192f;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #64ffda;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about, .skills, .experience, .projects, .contact {
+      background: #112240;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .skills ul, .experience ul, .projects ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skills ul li, .experience ul li, .projects ul li {
+      margin: 8px 0;
+    }
+
+    .experience-item, .project-item {
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: #0a192f;
+      color: #8892b0;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive text */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">ES</div>
-        <div>
-          <div style="font-weight:700">Emmanuel Sagwe</div>
-          <div style="font-size:12px;color:var(--muted)">Network & Security Engineer</div>
-        </div>
-      </div>
+  <header>
+    <h1>ES</h1>
+    <span class="menu-toggle">&#9776;</span>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <section class="hero">
+    <h2>Emmanuel Sagwe</h2>
+    <p>Network & Security Engineer</p>
+    <a href="Emmanuel_Sagwe_CV.pdf" download class="btn">Download Resume</a>
+  </section>
 
-    <main>
-      <section class="hero">
-        <div class="hero-card hero-left">
-          <div class="tagline">Hi — I’m <strong>Emmanuel Sagwe</strong></div>
-          <h1>Network & Security Engineer</h1>
-          <p>Passionate about building secure, reliable, and efficient IT environments. I specialize in networking, cybersecurity, and systems administration. My focus is on solving complex technical problems, enhancing system security, and leveraging technology to enable business growth.</p>
+  <section id="about" class="about">
+    <h3 class="section-title">About Me</h3>
+    <p>
+      I am a passionate Network & Security Engineer with a strong background in designing, securing, and maintaining IT infrastructure. With experience in system administration, network design, cybersecurity, and technical support, I thrive in solving complex problems and ensuring secure and efficient technology environments. I’m committed to continuous learning and staying up-to-date with emerging security trends and technologies.
+    </p>
+  </section>
 
-          <div class="cta">
-            <a class="btn" href="#contact">Hire / Contact</a>
-            <a class="btn ghost" href="/resume.pdf" download>Download Resume</a>
-          </div>
+  <section id="skills" class="skills">
+    <h3 class="section-title">Skills</h3>
+    <ul>
+      <li>Learning and development</li>
+      <li>Proficient in computer networking and cyber security</li>
+      <li>CRM systems proficiency</li>
+      <li>Skilled in TCP/IP</li>
+      <li>Excellent in troubleshooting (remote & in-person)</li>
+      <li>Hardware, software & OS maintenance</li>
+      <li>Server management and maintenance</li>
+      <li>Operating systems: Linux, Windows, MacOS</li>
+      <li>Microsoft Office proficiency</li>
+      <li>Firewall configuration and monitoring</li>
+      <li>VPN & secure remote access setup</li>
+      <li>Risk assessment & compliance</li>
+      <li>Security monitoring & incident response</li.
+      <li>Cloud integration strategies</li>
+      <li>Cross-cultural interpersonal skills</li>
+      <li>Excellent communication & active listening</li>
+      <li>Time management</li>
+      <li>Web & system development</li>
+      <li>Network design, development & deployment</li>
+    </ul>
+  </section>
 
-          <div style="margin-top:18px;color:var(--muted)">
-            <strong>Location:</strong> Nairobi, Kenya &nbsp; • &nbsp; <strong>Availability:</strong> Open to opportunities
-          </div>
-        </div>
+  <section id="experience" class="experience">
+    <h3 class="section-title">Experience</h3>
+    
+    <div class="experience-item">
+      <h4>System Administrator | Centric Ltd, Nairobi</h4>
+      <p><em>Jan 2024 – Dec 2024</em></p>
+      <ul>
+        <li>System and Network Administration</li>
+        <li>Troubleshooting internet issues</li>
+        <li>Hardware installation & configuration (routers, IP phones, projectors, printers, desktops)</li>
+        <li>Firewall configuration and maintenance</li>
+        <li>Software installation and maintenance</li>
+        <li>Technical support (remote & onsite)</li>
+        <li>Server maintenance</li>
+      </ul>
+    </div>
 
-        <aside class="profile">
-          <div class="avatar">ES</div>
-          <div style="font-weight:700">Emmanuel Sagwe</div>
-          <div class="small">Network & Security Engineer</div>
-          <div style="width:100%;display:flex;gap:10px;justify-content:center;margin-top:8px">
-            <a class="btn" href="#projects">View Work</a>
-            <a class="btn ghost" href="mailto:emmanu.sagwe@gmail.com">Email</a>
-          </div>
-        </aside>
-      </section>
+    <div class="experience-item">
+      <h4>ICT Network Technician (Internship) | Kenya Methodist University, Nairobi</h4>
+      <p><em>Jan 2023 – Dec 2023</em></p>
+      <ul>
+        <li>Cable trunking, crimping, router setup/configuration</li>
+        <li>Guiding students on portal usage</li>
+        <li>Switch setup/configuration</li>
+        <li>MS Office installation</li>
+        <li>Hardware installation and maintenance</li>
+        <li>Workstation setup for staff</li>
+        <li>Domain file migration</li>
+        <li>System & network security</li>
+      </ul>
+    </div>
 
-      <section id="about" class="grid-3">
-        <div class="card">
-          <h2>About Me</h2>
-          <p style="color:var(--muted)">I’m a Network & Security Engineer with hands-on experience in system administration, networking, and cybersecurity. I have supported organizations in strengthening IT infrastructure, mitigating risks, and deploying scalable security solutions. My passion lies in continuous learning, leveraging technology to solve real-world problems, and building systems that are both secure and user-friendly.</p>
-        </div>
+    <div class="experience-item">
+      <h4>Network & Security Engineer | AITREC Labs, Nairobi</h4>
+      <p><em>Feb 2020 – Dec 2021</em></p>
+      <ul>
+        <li>Network Design & Implementation</li>
+        <li>Security Solutions Deployment</li>
+        <li>Risk Assessment & Compliance</li>
+        <li>Monitoring & Incident Response</li>
+        <li>Advising on network upgrades, cloud integration, cybersecurity strategies</li>
+        <li>Security systems installation & configuration (CCTV & alarms)</li>
+      </ul>
+    </div>
+  </section>
 
-        <div class="card">
-          <h2>Experience</h2>
-          <p style="color:var(--muted)"><strong>System Administrator</strong> — Centric Ltd (Jan 2024 – Dec 2024)<br>System & Network Administration, Firewall setup, troubleshooting, server maintenance.</p>
-          <p style="color:var(--muted)"><strong>ICT Network Technician (Internship)</strong> — Kenya Methodist University (Jan 2023 – Dec 2023)<br>Network setup, security, hardware/software installation, and staff technical support.</p>
-          <p style="color:var(--muted)"><strong>Network & Security Engineer</strong> — AITREC Labs (Feb 2020 – Dec 2021)<br>Network design, security solutions, risk assessment, monitoring, incident response, CCTV/Alarm systems installation.</p>
-        </div>
+  <section id="projects" class="projects">
+    <h3 class="section-title">Projects</h3>
+    <div class="project-item">
+      <h4>Hostel Allocation System</h4>
+      <p>Developed a hostel allocation system to streamline student accommodation processes.</p>
+    </div>
+    <div class="project-item">
+      <h4>Company Network System</h4>
+      <p>Designed and implemented a multi-floor company network with departments (reception, logistics, store, sales, HR, finance, admin) ensuring smooth communication across all units.</p>
+    </div>
+    <div class="project-item">
+      <h4>University Network System</h4>
+      <p>Built a network connecting main campus (admin, HR, finance, IT, business, engineering, architecture, student labs) with branch campus (staff office, labs, health sciences) for seamless operations and collaboration.</p>
+    </div>
+  </section>
 
-        <div class="card">
-          <h2>Contact</h2>
-          <p style="color:var(--muted)">Phone: +254 703 915 544<br>Email: <a href="mailto:emmanu.sagwe@gmail.com">emmanu.sagwe@gmail.com</a><br>LinkedIn: <a href="https://www.linkedin.com/in/sagwe-emmanuel-276a90266">linkedin.com/in/sagwe-emmanuel</a></p>
-        </div>
-      </section>
+  <section id="contact" class="contact">
+    <h3 class="section-title">Contact</h3>
+    <p><strong>Phone:</strong> +254 703 915 544</p>
+    <p><strong>Email:</strong> <a href="mailto:emmanu.sagwe@gmail.com">emmanu.sagwe@gmail.com</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sagwe-emmanuel-276a90266" target="_blank">linkedin.com/in/sagwe-emmanuel-276a90266</a></p>
+  </section>
 
-      <section id="skills">
-        <h2>Skills</h2>
-        <div class="card">
-          <div class="skills">
-            <div class="skill">Learning & Development</div>
-            <div class="skill">Computer Networking & Cybersecurity</div>
-            <div class="skill">CRM Systems</div>
-            <div class="skill">TCP/IP</div>
-            <div class="skill">Troubleshooting</div>
-            <div class="skill">Hardware & Software Maintenance</div>
-            <div class="skill">Operating Systems (Linux, Windows, macOS)</div>
-            <div class="skill">Server Management & Maintenance</div>
-            <div class="skill">Firewall Configuration</div>
-            <div class="skill">VPN & Secure Remote Access</div>
-            <div class="skill">Intrusion Detection & Prevention</div>
-            <div class="skill">Network Monitoring</div>
-            <div class="skill">Cloud Integration</div>
-            <div class="skill">Risk Assessment & Compliance</div>
-            <div class="skill">Microsoft Office Suite</div>
-            <div class="skill">Documentation</div>
-            <div class="skill">Communication & Interpersonal Skills</div>
-            <div class="skill">Time Management</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-          <article class="project">
-            <h3>Hostel Allocation System</h3>
-            <p>Developed a PHP-based hostel allocation system with MPesa integration, automated reservations, and secure student data management.</p>
-            <div class="tags"><small class="small">PHP</small><small class="small">MySQL</small></div>
-          </article>
-
-          <article class="project">
-            <h3>Company Network Design</h3>
-            <p>Designed and implemented a three-floor company network for reception, logistics, store, sales, HR, finance, and administration, ensuring seamless communication across departments.</p>
-            <div class="tags"><small class="small">Networking</small><small class="small">Security</small></div>
-          </article>
-
-          <article class="project">
-            <h3>University Network System</h3>
-            <p>Planned and deployed a multi-campus university network connecting main campus and branch. Ensured reliable communication and security across departments (Admin, HR, Finance, IT, Student Labs, Health Sciences).</p>
-            <div class="tags"><small class="small">LAN/WAN</small><small class="small">Network Security</small></div>
-          </article>
-
-          <article class="project">
-            <h3>Security Systems Deployment</h3>
-            <p>Installed and configured CCTV and alarm systems for enterprise clients, integrated with network monitoring for enhanced incident response.</p>
-            <div class="tags"><small class="small">CCTV</small><small class="small">Alarm Systems</small><small class="small">Security</small></div>
-          </article>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2>Resume & Contact</h2>
-        <div class="card contact-grid">
-          <div>
-            <p style="color:var(--muted)">Want to collaborate or hire me? Send me a message below.</p>
-            <form id="contactForm">
-              <div style="margin-bottom:8px">
-                <label for="name">Name</label>
-                <input id="name" name="name" placeholder="Your name" required />
-              </div>
-              <div style="margin-bottom:8px">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" required />
-              </div>
-              <div style="margin-bottom:8px">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="How can I help?" required></textarea>
-              </div>
-              <div style="display:flex;gap:10px;align-items:center">
-                <button class="btn" type="submit">Send Message</button>
-                <button class="btn ghost" type="button" id="clearBtn">Clear</button>
-              </div>
-              <div id="formStatus" class="foot" role="status"></div>
-            </form>
-          </div>
-
-          <aside style="padding-left:10px;">
-            <h3 style="margin-top:0">Download CV</h3>
-            <p style="color:var(--muted)">Click below to download a PDF copy of my resume.</p>
-            <a class="btn" href="/resume.pdf" download>Download Resume</a>
-
-            <div style="margin-top:16px">
-              <h4 style="margin:0 0 8px 0">Quick Links</h4>
-              <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-                <a class="btn ghost" href="#projects">My Work</a>
-                <a class="btn ghost" href="#about">About</a>
-                <a class="btn ghost" href="mailto:emmanu.sagwe@gmail.com">Email Me</a>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div>Made with care — © <span id="year"></span> Emmanuel Sagwe • <a href="#contact">Get in touch</a></div>
-    </footer>
-  </div>
+  <footer>
+    <p>© 2025 Emmanuel Sagwe | Network & Security Engineer</p>
+  </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    const clearBtn = document.getElementById('clearBtn');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      status.textContent = 'Thanks — your message is ready to be sent from the server (this template has no backend).';
-      form.reset();
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
-
-    clearBtn.addEventListener('click', () => form.reset());
   </script>
 </body>
 </html>
